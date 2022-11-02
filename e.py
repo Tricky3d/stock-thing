@@ -46,7 +46,7 @@ def buy(amount):
     buyprice = amount * stock_price
     buyprice = float(buyprice)
     balance -= buyprice
-    print('Amount of shares = ', amount, 'Balance = ', balance)
+    print('Amount of shares = ', amount, 'Balance = ', int(balance))
 
     action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
     
