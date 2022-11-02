@@ -46,12 +46,29 @@ def buy(amount):
 
     return share_count, balance
     
+def sell(amount):
+    
+    global share_count
+    global balance
 
+    balance = float(balance)
+
+    share_count -= amount
+    buyprice = amount * stock_price
+    buyprice = float(buyprice)
+    balance += buyprice
+    print('Amount of shares = ', amount, 'Balance = ', balance)
+
+    return share_count, balance
 
     
 
 if(action == 'b'):
     amount = int(input('Enter amount '))
     buy(amount)
+
+if(action == 's'):
+    amount = int(input('Enter amount '))
+    sell(amount)
     
 
