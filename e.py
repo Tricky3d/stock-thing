@@ -58,7 +58,7 @@ def buy(amount):
      sell(amount)
 
     return share_count, balance
-    
+  #note to self, make get stock price only get called when needed, choose symbol.  
 def sell(amount):
     
     global share_count
