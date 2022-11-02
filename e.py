@@ -37,14 +37,17 @@ def buy(amount):
     
     global share_count
     global balance
+
     balance = float(balance)
+
     share_count += amount
     buyprice = amount * stock_price
     buyprice = float(buyprice)
     balance -= buyprice
     print('Amount of shares = ', amount, 'Balance = ', balance)
-    return share_count
-    return balance 
+
+    return share_count, balance
+    
 
 
     
