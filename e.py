@@ -27,7 +27,7 @@ def call_get_updates():
     
 call_get_updates()
 
-action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital')
+action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
 
 
 
