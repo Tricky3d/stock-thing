@@ -1,5 +1,3 @@
-from curses import ALL_MOUSE_EVENTS
-import pandas as pd
 import requests
 import threading
 
