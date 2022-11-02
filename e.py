@@ -4,6 +4,7 @@ import threading
 
 stock_price = int(0)
 share_count = int(0)
+action = '2139013'
 
 balance = int(input('Enter balance: '))
 print('Balance = ', balance)
@@ -27,16 +28,19 @@ def call_get_updates():
     
 call_get_updates()
 
-action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
 
-
+    
 
 def buy(amount):
     
     global share_count
     global balance
-
+    global stock_price
+    
     balance = float(balance)
+    
+    stock_price = float(stock_price)
+    amount = float(amount)
 
     share_count += amount
     buyprice = amount * stock_price
@@ -44,14 +48,27 @@ def buy(amount):
     balance -= buyprice
     print('Amount of shares = ', amount, 'Balance = ', balance)
 
+    action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
+    
+    if (action == 'b'):
+     amount = buy(float(input('Enter amount ')))
+     buy(amount)
+    if (action == 's'):
+     amount = int(input('Enter amount '))
+     sell(amount)
+
     return share_count, balance
     
 def sell(amount):
     
     global share_count
     global balance
-
+    global stock_price
+    
     balance = float(balance)
+    
+    stock_price = float(stock_price)
+    amount = float(amount)
 
     share_count -= amount
     buyprice = amount * stock_price
@@ -59,16 +76,29 @@ def sell(amount):
     balance += buyprice
     print('Amount of shares = ', amount, 'Balance = ', balance)
 
+    action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
+    
+    if (action == 'b'):
+     amount = buy(float(input('Enter amount ')))
+     buy(amount)
+    if (action == 's'):
+     amount = int(input('Enter amount '))
+     sell(amount)
+
+
+
     return share_count, balance
 
     
 
-if(action == 'b'):
-    amount = int(input('Enter amount '))
-    buy(amount)
 
-if(action == 's'):
+
+action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
+    
+if (action == 'b'):
+     amount = buy(float(input('Enter amount ')))
+     buy(amount)
+if (action == 's'):
     amount = int(input('Enter amount '))
     sell(amount)
-    
 
