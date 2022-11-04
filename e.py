@@ -18,20 +18,17 @@ def get_latest_updates(*symbol):
         df = requests.get(url).json()
         attributes = ['latestPrice']
         for i in attributes:
-            stock_price = format(df[i])
+            stock_price =   format(df[i])
             return float(stock_price)
 
-
-def call_get_updates():
-    get_latest_updates('AAPL')
-    threading.Timer(1.0, call_get_updates).start()
-    
-call_get_updates()
+get_latest_updates('AAPL')
 
 
     
 
 def buy(amount):
+
+    get_latest_updates('AAPL')
     
     global share_count
     global balance
@@ -57,10 +54,14 @@ def buy(amount):
      amount = int(input('Enter amount '))
      sell(amount)
 
+    if (action == 'e'):
+       check_balance()
+
     return share_count, balance
     
 def sell(amount):
-    
+  
+    get_latest_updates('AAPL')
     global share_count
     global balance
     global stock_price
@@ -85,12 +86,27 @@ def sell(amount):
      amount = int(input('Enter amount '))
      sell(amount)
 
+    if (action == 'e'):
+      check_balance()
+
 
 
     return share_count, balance
 
+def check_balance():
+  global balance
+  print(balance)
+  action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
     
+  if (action == 'b'):
+     amount = buy(float(input('Enter amount ')))
+     buy(amount)
+  if (action == 's'):
+    amount = int(input('Enter amount '))
+    sell(amount)
 
+  if (action == 'e'):
+    check_balance()
 
 
 action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
@@ -102,3 +118,9 @@ if (action == 's'):
     amount = int(input('Enter amount '))
     sell(amount)
 
+if (action == 'e'):
+  check_balance()
+
+
+
+   
