@@ -43,7 +43,7 @@ def buy(amount):
     buyprice = amount * stock_price
     buyprice = float(buyprice)
     balance -= buyprice
-    print('Amount of shares = ', amount, 'Balance = ', balance)
+    print('Amount of shares = ', amount, 'Balance = ', int(balance))
 
     action = input('b for buy, s for sell, c for check price, q for check amount of shares, e for equity, cap for capital: ')
     
@@ -58,7 +58,7 @@ def buy(amount):
        check_balance()
 
     return share_count, balance
-    
+  #note to self, make get stock price only get called when needed, choose symbol.  
 def sell(amount):
   
     get_latest_updates('AAPL')
